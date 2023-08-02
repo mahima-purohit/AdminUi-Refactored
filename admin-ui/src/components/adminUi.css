@@ -1,0 +1,30 @@
+#AdminUiSearchBar{
+    margin: 10px;
+}
+.table-container{
+    overflow-x: auto;
+}
+.table-wrapper{
+    margin-top: 1px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5spx;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    margin: 1px;
+}
+#Delete-Selected{
+    background-color: red;
+    border-radius:10px;
+}
+#footer{
+    margin-top: 1px
+}
+.highlight{
+    background-color: rgb(210, 203, 203);
+}
