@@ -14,7 +14,7 @@ const AdminUi = (props) => {
         }
         onLoadHandler();
     }, []);
-    
+
     /**
      * @function {resetTableDataState} and {resetDataState}:helper function to update the state of {data} and {table data}
      * @param {*} newData : incoming data to update the state of tableData and Data with.
@@ -60,7 +60,7 @@ const AdminUi = (props) => {
         console.log(tableData);
         setData(updatedData);
     };
-    
+
     /**
      * @function {handleSearch}: a function to handle the search operation when provided with email, name, and role.
      * @param {} searchString : the value of the search word.
@@ -73,12 +73,12 @@ const AdminUi = (props) => {
             }
             else {
                 const tableDataAfterSearch = data.filter((row) => {
-                    return (row.id === searchString ||
-                        row.name.toLowerCase() === searchString.toLowerCase() ||
-                        row.email.toLowerCase() === searchString.toLowerCase() ||
-                        row.role.toLowerCase() === searchString.toLowerCase())
+                    return (row.id.includes(searchString) ||
+                        row.name.toLowerCase().includes(searchString.toLowerCase()) ||
+                        row.email.includes(searchString.toLowerCase()) ||
+                        row.role.includes(searchString.toLowerCase()))
                 });
-                if(tableDataAfterSearch.length === 0){
+                if (tableDataAfterSearch.length === 0) {
                     alert(`No record present for ${searchString}`);
                 }
                 else setTableData(tableDataAfterSearch);

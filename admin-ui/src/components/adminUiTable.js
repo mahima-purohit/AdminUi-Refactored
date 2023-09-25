@@ -18,7 +18,6 @@ const AdminUiTable = ({
     resetTableDataState,
     resetDataState
 }) => {
-
     const [searchString, setSearchString] = useState("");
     const [editingId, setEditingId] = useState(null);
     const [checkboxes, setCheckBoxes] = useState([]);
@@ -27,9 +26,9 @@ const AdminUiTable = ({
     const [toRow, setToRow] = useState(pageSize);
     const [fromRow, setFromRow] = useState(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         updateFromTwoAndToRow();
-    },[searchString])
+    }, [searchString])
 
     useEffect(() => {
         const handlePageData = async () => {
@@ -43,7 +42,7 @@ const AdminUiTable = ({
     /**
      * helper fn to initailize the toRow and fromRow states 
      */
-    const updateFromTwoAndToRow = ()=> {
+    const updateFromTwoAndToRow = () => {
         setFromRow(0);
         setToRow(10);
     }
@@ -110,7 +109,7 @@ const AdminUiTable = ({
             setCheckBoxes(checkboxes.filter((item) => item !== checkedRowId));
         }
         console.log(checkboxes);
-        
+
     };
     /**
      * function to handle to check all checkboxes on a page.
@@ -149,12 +148,13 @@ const AdminUiTable = ({
         })
         return newData;
     }
-    
+
 
     return (
         <div>
             <Grid
-                container 
+                data-testid='admin-ui-grid'
+                container
                 spacing={1}
                 id="AdminUiSearchBar"
                 alignItems="center"
@@ -173,6 +173,7 @@ const AdminUiTable = ({
                 <Grid item xs={1}>
                     <item>
                         <button
+                            data-testid="search-button"
                             onClick={() => handleSearch(searchString)}
                         >
                             <SearchIcon size="large" />
@@ -180,7 +181,7 @@ const AdminUiTable = ({
                     </item>
                 </Grid>
             </Grid>
-            <Box class="table-wrapper">
+            <Box className="table-wrapper">
                 <table>
                     <thead>
                         <tr>
@@ -207,7 +208,7 @@ const AdminUiTable = ({
                                 return (
                                     <tr key={row.id}
                                         id="row"
-                                        className={(checkboxes.includes(row.id)? "highlight" : "")}
+                                        className={(checkboxes.includes(row.id) ? "highlight" : "")}
                                     >
                                         <td>
                                             {

@@ -2,9 +2,10 @@ import AdminUi from './components/adminUi';
 import './App.css';
 
 function App() {
+
   return (
     <div>
-      <AdminUi/>
+      <AdminUi />
     </div>
   );
 }

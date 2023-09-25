@@ -1,10 +1,13 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Pagination } from "@mui/material";
 
 const pageSize = 10;
-const Footer = ({tableData,handlePageChange,handleDeleteSeleted}) => {
+const Footer = ({ tableData, handlePageChange, handleDeleteSeleted }) => {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
         <Box>
             <Grid id="footer" container spacing={2}>
@@ -22,12 +25,14 @@ const Footer = ({tableData,handlePageChange,handleDeleteSeleted}) => {
                 <Grid item xs={6} md={8}>
                     <item>
                         {tableData ? (
-                             <Pagination 
+                            <Pagination
                                 tableData={tableData}
-                                count={Math.ceil(tableData.length/pageSize)}
+                                count={Math.ceil(tableData.length / pageSize)}
                                 onChange={handlePageChange}
-                             />
-                        ):(
+                                showFirstButton={true}
+                                showLastButton={true}
+                            />
+                        ) : (
                             <div className="loading">
                                 Loading...
                             </div>
